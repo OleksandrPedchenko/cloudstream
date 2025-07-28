@@ -108,4 +108,6 @@ class DownloadFileGenerator(
 
         return true
     }
+
+    override fun random() {}
 }

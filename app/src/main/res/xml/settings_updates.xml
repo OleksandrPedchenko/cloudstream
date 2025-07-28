@@ -28,6 +28,16 @@
             android:title="@string/updates_settings"
             app:defaultValue="true"
             app:key="@string/auto_update_key" />
+        <EditTextPreference
+            android:key="@string/github_user_key"
+            android:title="@string/github_user_title"
+            android:summary="@string/github_user_summary"
+            android:defaultValue="@string/github_user_default" />
+        <EditTextPreference
+            android:key="@string/github_repo_key"
+            android:title="@string/github_repo_title"
+            android:summary="@string/github_repo_summary"
+            android:defaultValue="@string/github_repo_default" />
     </PreferenceCategory>
 
     <PreferenceCategory

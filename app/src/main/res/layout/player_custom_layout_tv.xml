@@ -875,6 +875,14 @@
                             tools:visibility="visible" />
 
                         <com.google.android.material.button.MaterialButton
+                            android:id="@+id/player_random_episode"
+                            style="@style/VideoButtonTV"
+                            android:text="@string/random_mode_off"
+                            android:focusable="true"
+                            android:clickable="true"
+                            app:icon="@drawable/ic_baseline_shuffle_24" />
+
+                        <com.google.android.material.button.MaterialButton
                             android:id="@+id/player_resize_btt"
                             style="@style/VideoButtonTV"
                             android:nextFocusLeft="@id/player_skip_episode"

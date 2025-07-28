@@ -810,9 +810,17 @@
                                 android:id="@+id/player_skip_episode"
                                 style="@style/VideoButton"
                                 android:nextFocusLeft="@id/player_skip_op"
-                                android:nextFocusRight="@id/player_lock"
+                                android:nextFocusRight="@id/player_random_episode"
                                 android:text="@string/next_episode"
                                 app:icon="@drawable/ic_baseline_skip_next_24" />
+
+                            <com.google.android.material.button.MaterialButton
+                                android:id="@+id/player_random_episode"
+                                style="@style/VideoButton"
+                                android:nextFocusLeft="@id/player_skip_op"
+                                android:nextFocusRight="@id/player_lock"
+                                android:text="@string/random_mode_off"
+                                app:icon="@drawable/ic_baseline_shuffle_24" />
 
                         </LinearLayout>
                     </LinearLayout>

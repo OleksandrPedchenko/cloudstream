@@ -36,6 +36,8 @@ class ExtractorLinkGenerator(
 
     override fun prev() {}
 
+    override fun random() {}
+
     override suspend fun generateLinks(
         clearCache: Boolean,
         sourceTypes: Set<ExtractorLinkType>,

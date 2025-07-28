@@ -58,7 +58,7 @@ android {
     compileSdk = libs.versions.compileSdk.get().toInt()
 
     defaultConfig {
-        applicationId = "com.lagradost.cloudstream3"
+        applicationId = "com.lagradost.cloudstream3.sanitos"
         minSdk = libs.versions.minSdk.get().toInt()
         targetSdk = libs.versions.targetSdk.get().toInt()
         versionCode = 66

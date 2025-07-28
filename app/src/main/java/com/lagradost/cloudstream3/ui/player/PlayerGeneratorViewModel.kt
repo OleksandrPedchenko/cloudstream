@@ -47,6 +47,7 @@ class PlayerGeneratorViewModel : ViewModel() {
     private var currentLoadingEpisodeId: Int? = null
 
     var forceClearCache = false
+    var useRandomNextEpisode: Boolean = false
 
     fun setSubtitleYear(year: Int?) {
         _currentSubtitleYear.postValue(year)
@@ -71,10 +72,12 @@ class PlayerGeneratorViewModel : ViewModel() {
 
     fun loadLinksNext() {
         Log.i(TAG, "loadLinksNext")
-        if (generator?.hasNext() == true) {
-            generator?.next()
-            loadLinks()
+        when {
+            useRandomNextEpisode -> generator?.random()
+            generator?.hasNext() == true -> generator?.next()
+            else -> return
         }
+        loadLinks()
     }
 
     fun hasNextEpisode(): Boolean? {

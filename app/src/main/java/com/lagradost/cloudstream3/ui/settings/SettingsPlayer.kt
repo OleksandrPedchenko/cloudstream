@@ -270,5 +270,17 @@ class SettingsPlayer : PreferenceFragmentCompat() {
                 return@setOnPreferenceClickListener true
             }
         }
+
+        getPref(R.string.show_random_button_key)?.setOnPreferenceChangeListener { _, newValue ->
+            if (newValue == false) {
+                val prefs = PreferenceManager.getDefaultSharedPreferences(requireContext())
+                val editor = prefs.edit()
+                prefs.all.keys.filter { it.startsWith("random_mode_") }.forEach { key ->
+                    editor.putBoolean(key, false)
+                }
+                editor.apply()
+            }
+            true
+        }
     }
 }

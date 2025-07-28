@@ -73,6 +73,14 @@ class RepoLinkGenerator(
         return episodes
     }
 
+    override fun random() {
+        Log.i(TAG, "random")
+        currentIndex = episodes.indices
+            .filterNot { it == currentIndex }
+            .takeIf { it.isNotEmpty() }
+            ?.random() ?: return
+    }
+
     // this is a simple array that is used to instantly load links if they are already loaded
     //var linkCache = Array<Set<ExtractorLink>>(size = episodes.size, init = { setOf() })
     //var subsCache = Array<Set<SubtitleData>>(size = episodes.size, init = { setOf() })

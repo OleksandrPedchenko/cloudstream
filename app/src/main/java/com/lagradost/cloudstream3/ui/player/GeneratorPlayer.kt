@@ -2095,6 +2095,45 @@ class GeneratorPlayer : FullScreenPlayer() {
                 autoSelectSubtitles()
             }
         }
+
+        updateRandomButtonState()
+        playerBinding?.playerRandomEpisode?.setOnClickListener {
+            val prefs = PreferenceManager.getDefaultSharedPreferences(requireContext())
+            val showId = getShowId()
+            if (showId != null && prefs.getBoolean(getString(R.string.show_random_button_key), true)) {
+                val newValue = !viewModel.useRandomNextEpisode
+                prefs.edit().putBoolean("random_mode_$showId", newValue).apply()
+                updateRandomButtonState()
+                val mode = if (newValue) "Random" else "Sequential"
+                showToast("Next episode mode: $mode", Toast.LENGTH_SHORT)
+            }
+        }
+    }
+
+    fun getShowId(): String? {
+        val meta = viewModel.getMeta()
+        return when (meta) {
+            is ResultEpisode -> meta.parentId.toString()
+            else -> null
+        }
+    }
+
+    fun updateRandomButtonState() {
+        val prefs = PreferenceManager.getDefaultSharedPreferences(requireContext())
+        val meta = viewModel.getMeta()
+        val isEpisodeBased = when (meta) {
+            is ResultEpisode -> meta.tvType.isEpisodeBased() == true
+            is ExtractorUri -> meta.tvType?.isEpisodeBased() == true
+            else -> false
+        }
+        val showRandomButton = prefs.getBoolean(getString(R.string.show_random_button_key), true)
+        val showId = getShowId()
+        val useRandom = showRandomButton && showId != null && prefs.getBoolean("random_mode_$showId", false)
+        playerBinding?.playerRandomEpisode?.apply {
+            isVisible = showRandomButton && isEpisodeBased
+            setText(if (useRandom) R.string.random_mode_on else R.string.random_mode_off)
+        }
+        viewModel.useRandomNextEpisode = useRandom
     }
 }
 

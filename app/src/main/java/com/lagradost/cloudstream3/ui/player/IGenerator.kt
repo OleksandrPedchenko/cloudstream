@@ -34,6 +34,7 @@ interface IGenerator {
     fun next()
     fun prev()
     fun goto(index: Int)
+    fun random() {}
 
     fun getCurrentId(): Int?                    // this is used to save data or read data about this id
     fun getCurrent(offset: Int = 0): Any?      // this is used to get metadata about the current playing, can return null

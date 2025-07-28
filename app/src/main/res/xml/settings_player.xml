@@ -117,6 +117,12 @@
             android:title="@string/software_decoding"
             app:defaultValue="true"
             app:key="@string/software_decoding_key" />
+        <SwitchPreference
+            android:icon="@drawable/ic_baseline_shuffle_24"
+            android:key="@string/show_random_button_key"
+            android:title="@string/show_random_button_title"
+            android:summary="@string/show_random_button_summary"
+            android:defaultValue="true" />
     </PreferenceCategory>
     <PreferenceCategory
         android:title="@string/pref_category_gestures"

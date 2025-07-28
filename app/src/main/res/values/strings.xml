@@ -75,6 +75,7 @@
     <string name="rotate_video_key" translatable="false">rotate_video_key</string>
     <string name="auto_rotate_video_key" translatable="false">auto_rotate_video_key</string>
     <string name="biometric_key" translatable="false">biometric_key</string>
+    <string name="show_random_button_key" translatable="false">show_random_button_key</string>
     <!-- FORMAT MIGHT TRANSLATE, WILL CAUSE CRASH IF APPLIED WRONG -->
     <string name="extra_info_format" formatted="true" translatable="false">%d %s | %s</string>
     <string name="storage_size_format" formatted="true" translatable="false">%s • %s</string>
@@ -883,4 +884,16 @@
     <string name="speedup_key" translatable="false">speedup_key</string>
     <string name="speedup_title" >LongPress Speed Toggle</string>
     <string name="speedup_summary" >Hold to get 2x speed</string>
+    <string name="random_mode_on">Random Mode: ON</string>
+    <string name="random_mode_off">Random Mode: OFF</string>
+    <string name="show_random_button_title">Show Random Episode Button</string>
+    <string name="show_random_button_summary">Show or hide the random episode mode button in the player</string>
+    <string name="github_user_key" translatable="false">github_user_key</string>
+    <string name="github_repo_key" translatable="false">github_repo_key</string>
+    <string name="github_user_title">GitHub Username</string>
+    <string name="github_user_summary">Set the GitHub username for update checks</string>
+    <string name="github_repo_title">GitHub Repository</string>
+    <string name="github_repo_summary">Set the GitHub repository for update checks</string>
+    <string name="github_user_default" translatable="false">recloudstream</string>
+    <string name="github_repo_default" translatable="false">cloudstream</string>
 </resources>

@@ -33,9 +33,6 @@ import java.io.InputStreamReader
 
 class InAppUpdater {
     companion object {
-        private const val GITHUB_USER_NAME = "recloudstream"
-        private const val GITHUB_REPO = "cloudstream"
-
         private const val LOG_TAG = "InAppUpdater"
 
         // === IN APP UPDATER ===
@@ -91,8 +88,16 @@ class InAppUpdater {
             }
         }
 
+        private fun Activity.getGithubUserRepo(): Pair<String, String> {
+            val settingsManager = PreferenceManager.getDefaultSharedPreferences(this)
+            val user = settingsManager.getString(getString(R.string.github_user_key), getString(R.string.github_user_default)) ?: getString(R.string.github_user_default)
+            val repo = settingsManager.getString(getString(R.string.github_repo_key), getString(R.string.github_repo_default)) ?: getString(R.string.github_repo_default)
+            return user to repo
+        }
+
         private suspend fun Activity.getReleaseUpdate(): Update {
-            val url = "https://api.github.com/repos/$GITHUB_USER_NAME/$GITHUB_REPO/releases"
+            val (githubUser, githubRepo) = getGithubUserRepo()
+            val url = "https://api.github.com/repos/$githubUser/$githubRepo/releases"
             val headers = mapOf("Accept" to "application/vnd.github.v3+json")
             val response =
                 parseJson<List<GithubRelease>>(
@@ -160,9 +165,10 @@ class InAppUpdater {
         }
 
         private suspend fun Activity.getPreReleaseUpdate(): Update {
+            val (githubUser, githubRepo) = getGithubUserRepo()
             val tagUrl =
-                "https://api.github.com/repos/$GITHUB_USER_NAME/$GITHUB_REPO/git/ref/tags/pre-release"
-            val releaseUrl = "https://api.github.com/repos/$GITHUB_USER_NAME/$GITHUB_REPO/releases"
+                "https://api.github.com/repos/$githubUser/$githubRepo/git/ref/tags/pre-release"
+            val releaseUrl = "https://api.github.com/repos/$githubUser/$githubRepo/releases"
             val headers = mapOf("Accept" to "application/vnd.github.v3+json")
             val response =
                 parseJson<List<GithubRelease>>(app.get(releaseUrl, headers = headers).text)
